@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include<string>
+#include "mapStore.h"
 using namespace std;
 
 //gets rid of quotation marks around a string
@@ -81,7 +82,7 @@ int main() {
             }
 
 
-            //insert data nodes
+            //insert data/ nodes
         }
     }
 
