@@ -80,7 +80,7 @@ int main() {
                 multiplayerTF = false;
             }
 
-            
+
             //insert data nodes
         }
     }
@@ -108,8 +108,15 @@ int main() {
 
     cout << "---------------------------------------------------" << endl;
     cout << "Next, what type of genre do you prefer?" << endl;
-
-
+    cout << "Enter a number: " << endl;
+    cout << "   1. Action" << endl;
+    cout << "   2. Strategy" << endl;
+    cout << "   3. RPG" <<endl;
+    cout << "   4. Sports" <<endl;
+    cout << "   5. Racing" << endl;
+    cout << "   6. Simulation" << endl;
+    int genre;
+    cin >> genre;
     cout << "---------------------------------------------------" << endl;
     cout << "Do you want a singleplayer game, or one with multiplayer options?" << endl;
     cout << "Enter a number: " << endl;
@@ -120,5 +127,13 @@ int main() {
 
     cout << "---------------------------------------------------" << endl;
     cout << "Lastly, how long do you want the game to be? (hours)" << endl;
+    cout << "Enter a number: " << endl;
+    cout << "   1. 0-10" << endl;
+    cout << "   2. 11-20" << endl;
+    cout << "   3. 21-40" <<endl;
+    cout << "   4. 40+" <<endl;
+    int hour;
+    cin >> hour;
+
     return 0;
 }
