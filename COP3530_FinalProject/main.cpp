@@ -201,23 +201,27 @@ int main() {
     cout << "---------------------------------------------------" << endl;
     cout << "Lastly, how long do you want the game to be? (hours)" << endl;
     cout << "Enter a number: " << endl;
-    cout << "   1. 0-10 (short)" << endl;
-    cout << "   2. 11-20 (medium)" << endl;
-    cout << "   3. 21-40 (long)" <<endl;
-    cout << "   4. 41+ (longer)" <<endl;
+    cout << "   1. 0-20 (short)" << endl;
+    cout << "   2. 21-40 (short)" << endl;
+    cout << "   3. 41+ (long)" <<endl;
+
+
     int hourNum;
     cin >> hourNum;
     switch (hourNum) {
         case 1:
-            length = 0;
+            length = 20;
             break;
         case 2:
-            length = 11;
+            length = 40;
+            break;
         case 3:
-            length = 21;
-        case 4:
             length = 41;
+            break;
     }
+    cout << "---------------------------------------------------" << endl;
+    cout << "Using map based algorithm" << endl;
     map.searchAndPrintBestGame(console, genre, multiplayer, rating, length);
+    cout << "---------------------------------------------------" << endl;
     return 0;
 }
