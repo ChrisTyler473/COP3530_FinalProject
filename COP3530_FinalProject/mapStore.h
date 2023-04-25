@@ -33,8 +33,7 @@ private:
         }
     };
     //order of keys- console, genre, multiplayer, last value is the vertex or game, but we're still not done evaluating
-    unordered_map<string, unordered_map<string, unordered_map<bool,vertex>>> m;
-    vector<vertex> tempOutput;
+    unordered_map<string, unordered_map<string, unordered_map<bool,vector<vertex>>>> m;
 
 public:
     //the input arguments are all the values of a single game
