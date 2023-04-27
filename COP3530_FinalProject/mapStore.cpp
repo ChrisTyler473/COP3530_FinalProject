@@ -79,7 +79,7 @@ void mapStore ::searchAndPrintBestGame(std::string console, std::string genre, b
         int highScoreIndex = *max_element(scores.begin(), scores.end());
 
         //print
-        cout << "The best game based on your responses, review score, and price, is: "<< m[console][genre][multiplayer].at(highScoreIndex).name << " " << m[console][genre][multiplayer].at(highScoreIndex).year;
+        cout << "The best game based on your responses, review score, and price, is: "<< m[console][genre][multiplayer].at(highScoreIndex).name << " " << m[console][genre][multiplayer].at(highScoreIndex).year << endl;
     }
     else{
         cout << "No games found, try different search parameters" << endl;

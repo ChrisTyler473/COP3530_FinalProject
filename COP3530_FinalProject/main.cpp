@@ -3,6 +3,8 @@
 #include <sstream>
 #include<string>
 #include "mapStore.h"
+#include "mergeSort.h"
+#include <chrono>
 using namespace std;
 
 //gets rid of quotation marks around a string
@@ -11,10 +13,9 @@ string trimString(string toTrim){
     toTrim.erase(toTrim.length()-1, 1);
     return toTrim;
 }
-string prioritize(string p){
 
-}
 int main() {
+    mergeSort merger;
     mapStore map;
     //parsing data from file
     ifstream inFile("video_games.csv");
@@ -69,7 +70,7 @@ int main() {
 
             getline(stream, console, ',');
             console = trimString(console);
-            cout << console << endl;
+            //cout << console << endl;
             getline(stream, rating, ',');
             getline(stream, skip, ',');
             getline(stream, yearS, ',');
@@ -93,7 +94,22 @@ int main() {
 
 
             //insert data/ nodes
+            //all the commented out code can be used to compare insertion times
+            //but it prints out hundreds of statements every time, so its
+            //not practical to run it every time
+
+
+            //auto start = chrono::high_resolution_clock ::now();
             map.insertGame(console, genre,multiplayerTF, title, year, usedprice, review, length, rating);
+            //auto stop = chrono::high_resolution_clock ::now();
+            //auto duration = chrono::duration_cast<chrono::microseconds>(stop-start);
+            //cout << "Insertion time (3D map) = " << duration.count() << "micro s" << endl;
+
+            //start = chrono::high_resolution_clock ::now();
+            merger.insertGame(console, genre,multiplayerTF, title, year, usedprice, review, length, rating);
+            // stop = chrono::high_resolution_clock ::now();
+            //duration = chrono::duration_cast<chrono::microseconds>(stop-start);
+            //cout << "Insertion time (Merge Sort) = " << duration.count() << "micro s" << endl;
         }
     }
 
@@ -106,6 +122,7 @@ int main() {
     bool multiplayer;
     float length;
 
+    //merger.sortInit();
     cout << "Hello, this program will help you search for a 2000's era video game based on your preferences and needs" << endl;
     cout << "---------------------------------------------------" << endl;
     cout << "First, what type of console are you playing on?" << endl;
@@ -221,7 +238,20 @@ int main() {
     }
     cout << "---------------------------------------------------" << endl;
     cout << "Using map based algorithm" << endl;
+    auto start = chrono::high_resolution_clock :: now();
     map.searchAndPrintBestGame(console, genre, multiplayer, rating, length);
+    auto stop = chrono::high_resolution_clock ::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop-start);
+    cout << "Execution time (3D map search) = " << duration.count() << "micro s" << endl;
     cout << "---------------------------------------------------" << endl;
+    cout << "Using merge sort algorithm" << endl;
+    start = chrono::high_resolution_clock :: now();
+    merger.sortInit();
+    merger.printBestGame(console, genre, multiplayer, rating, length);
+    stop = chrono::high_resolution_clock ::now();
+    duration = chrono::duration_cast<chrono::microseconds>(stop-start);
+    cout << "Execution time (merge sort) = " << duration.count() << "micro s" << endl;
+    cout << "---------------------------------------------------" << endl;
+    cout << "These execution times do not factor in the insertion time" << endl;
     return 0;
 }
